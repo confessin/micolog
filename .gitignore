@@ -5,6 +5,9 @@
 *.pyo
 .bzr
 .bzrignore
+*.swp
+*.swo
 psd
 config.py
 app.yaml
+.ropeproject/*

@@ -118,7 +118,6 @@ class MainPage(BasePublicPage):
         show_prev =entries and  (not (page == 1))
         show_next =entries and  (not (page == max_page))
         #print page,max_page,g_blog.entrycount,self.blog.posts_per_page
-
         return self.render('index',
                            dict(entries=entries, show_prev=show_prev, show_next=show_next, pageindex=page, ishome=True,
                                 pagecount=max_page, postscounts=entrycount))

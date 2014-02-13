@@ -1,7 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head profile="http://gmpg.org/xfn/11">
-{%mf head%}
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
 <title>{% block title %} {{ blog.title}}{% endblock %}</title>
 <link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" media="screen" />
@@ -32,7 +31,6 @@ myBoxObject.applyCornersToAll();
 }
 </script>
 
-{%endmf%}
 </head>
 
 <body>
@@ -65,8 +63,6 @@ myBoxObject.applyCornersToAll();
 
      {%endif%}
          </li>
-{%mf nav_menu%}
-{%endmf%}
 <li id="searchbox">
 
 <form method="get" id="searchform" action="http://www.google.com/search">
@@ -95,12 +91,10 @@ myBoxObject.applyCornersToAll();
 
 <div id="push"></div>
 <div id="footer">
-{%mf footer%}
 	<div class="footer">
 	    <p class="fooleft">{{blog.title}} is proudly powered by <a href="http://xuming.net">Micolog</a>. Theme by <a href="http://bob.my/" title="Simple">Bob</a></p>
 		<p class="fooright"><a href="#top" title="Top">top</a></p>
 	</div>
-{%endmf%}
 </div>
 </div>
 </body>

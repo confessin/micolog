@@ -104,7 +104,7 @@ def cache(key="",time=3600):
                 if ilen>=4:
                     for skey,value in html[3].items():
                         response.headers[skey]=value
-                response.out.write(html[0])
+                response.out.write(unicode(html[0]))
             else:
                 if 'last-modified' not in response.headers:
                     response.last_modified = format_date(datetime.utcnow())
@@ -224,8 +224,9 @@ class Pager(object):
 
 
 class BaseRequestHandler(webapp.RequestHandler):
-    def __init__(self):
+    def __init__(self, request=None, response=None):
         self.current='home'
+        self.initialize(request, response)
 
 ##	def head(self, *args):
 ##		return self.get(*args)
@@ -300,7 +301,7 @@ class BaseRequestHandler(webapp.RequestHandler):
                 content=micolog_template.render(self.blog.default_theme,"error.html", self.template_vals)
         except:
             content=message
-        self.response.out.write(content)
+        self.response.out.write(unicode(content))
 
     def get_render(self,template_file,values):
         template_file=template_file+".html"
@@ -321,7 +322,7 @@ class BaseRequestHandler(webapp.RequestHandler):
         Helper method to render the appropriate template
         """
         html=self.get_render(template_file,values)
-        self.response.out.write(html)
+        self.response.out.write(unicode(html))
 
     def message(self,msg,returl=None,title='Infomation'):
         self.render('msg',{'message':msg,'title':title,'returl':returl})
@@ -332,7 +333,7 @@ class BaseRequestHandler(webapp.RequestHandler):
         """
         self.template_vals.update(template_vals)
         path = os.path.join(os.path.dirname(__file__), template_file)
-        self.response.out.write(template.render(path, self.template_vals))
+        self.response.out.write(unicode(template.render(path, self.template_vals)))
 
     def param(self, name, **kw):
         return self.request.get(name, **kw)
@@ -350,7 +351,7 @@ class BaseRequestHandler(webapp.RequestHandler):
            return default
 
     def write(self, s):
-        self.response.out.write(s)
+        self.response.out.write(unicode(s))
 
     def chk_login(self, redirect_url='/'):
         if self.is_login:

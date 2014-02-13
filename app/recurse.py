@@ -16,11 +16,14 @@ class RecurseNode( Node ):
         del kwargs['nodelist_first'], kwargs['nodelist_second'], kwargs['sequence'], kwargs['children_name'], kwargs['loopvar']
         self.kwargs = kwargs
         
-    def __repr__(self):
-        reversed_text = self.is_reversed and ' reversed' or ''
-        return "<For Node: for %s in %s, tail_len: %d%s>" % \
-            (', '.join(self.loopvars), self.sequence, len(self.nodelist_loop),
-             reversed_text)
+    #def __repr__(self):
+    #    import pdb; pdb.set_trace()
+    #    # FIXME: Hardcoding it, coz dont know whats happening.
+    #    #reversed_text = self.is_reversed and ' reversed' or ''
+    #    reversed_text = False and ' reversed' or ''
+    #    return "<For Node: for %s in %s, tail_len: %d%s>" % \
+    #        (', '.join(self.loopvars), self.sequence, len(self.nodelist_loop),
+    #         reversed_text)
 
     def __iter__(self):
       for node in self.nodelist_first:
