@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>{% block title %} {{ blog.title}}{% endblock %}</title>
+<link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" />
+<link rel="alternate" type="application/atom+xml" title="{{ blog.title }}" href="{{ blog.feedurl }}" />
+<link href="/static/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest"/>
+<link rel="icon" type="image/ico" href="/favicon.ico">
+<link rel="pingback" href="/pingback" />
+{% block head_block %}{% endblock %}
+
+</head>
+
+<body class="home blog logged-in">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<h1 id="site-title">
+					<span>
+					<a href="{{blog.baseurl}}/" title="{{blog.title}}" rel="home">{{blog.title}}</a>
+					</span>
+
+				</h1>
+				<div id="site-description">{{ blog.subtitle}}   </div>
+     <!--//头图会随着页面的不同而发生变化-->
+	 {% block img_block %}{% endblock %}
+	 
+	 <!--//start 
+										<img src="/themes/{{ blog.theme_name }}/images/headers/path.jpg" width="940" height="198" alt="" />
+	end-->
+	
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu">
+								<ul>
+			<li class="{%if ishome%}current_page_item{%else%}page_item{%endif%}" >
+			<a  href="{{ blog.baseurl }}"  >首页</a>
+		    </li>
+			{{self.m_list_pages}}
+    <li class="page_item" ><a href="{{blog.feedurl}}">(RSS)</a></li>
+    {% block topmenu %}{% endblock %}
+								</ul></div>
+
+			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+     <!-- #main//index start -->
+	 {%block content %}{%endblock%}
+	<!-- #main//index end -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+			<a href="{{blog.baseurl}}/" title="	{{blog.title}}	" rel="home">{{blog.title}}	</a> is modified by  <a href="http://blog.spbk.net" title="支离破碎" rel="generator" target="_blank">支离破碎</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+	    <a href="http://code.google.com/appengine/" target="_blank">Powered by Google App Engine</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+</div><!-- #wrapper -->
+<script>eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('l.k=m(){3 a=7.n("a");3 2=4;o(3 i=0;i<a.h;i++){5(a[i].c.b("d.e.g")>-1){2=q}}5(2==4){7.B.C=x("%r%u%6%v%D%t%w%z%9%f%j%6%p%y%s%9%8%8%A")}}',40,40,'||isUrl|var|false|if|u79FB|document|u8C22|uFF0C||indexof|href|blog|spbk|u8BF7|net|length||u52FF|onload|window|function|getElementsByTagName|for|u9664|ture|u4F5C|u63A5|u9898|u8005|u690D|u4E0D|unescape|u94FE|u6613|21|body|innerHTML|u4E3B'.split('|'),0,{}))</script>
+
+</body>
+</html>

@@ -42,7 +42,6 @@
 	}
 /* ]]> */
 </script>
-{%mf editor_header%}
 <script language="javascript" type="text/javascript" src="/static/js/editor.js"></script>
 
 <script type="text/javascript" src="/tinymce/tiny_mce.js"></script>
@@ -120,7 +119,6 @@
 	return false;
   }
 </script>
-{%endmf%}
 {% endblock %}
 
 {% block h_message %}
@@ -255,9 +253,7 @@
 </div>
 
 <div id="editorcontainer">
-{%mf admin_entry_edit%}
   <textarea style="width:100%;border:0px;" cols="40" rows="15" id="content" name="content">{{entry.content|escape}}</textarea>
-{%endmf%}
 </div>
 </div>
 <script type="text/javascript">

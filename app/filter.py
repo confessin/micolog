@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 from google.appengine.dist import use_library
-use_library('django', '1.2')
 from django import template
 from model import *
 import django.template.defaultfilters as defaultfilters
 import urllib
+from google.appengine.ext.webapp import template as templatex
 register = template.Library()
+gae_register = templatex.create_template_register()
 from datetime import *
 
 @register.filter
@@ -31,7 +31,7 @@ def check_current(v1,v2):
 	else:
 		return ""
 
-@register.filter
+@register.filter()
 def excerpt_more(entry,value='..more'):
 	return entry.get_content_excerpt(value.decode('utf8'))
 

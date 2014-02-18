@@ -1,0 +1,52 @@
+﻿{% extends "base.html" %}
+{%load filter%}
+{% block head_block %}
+<meta name="google-site-verification" content="tfe6EctFJscB8yppOx1U5OpB7uii4JebmGNV81etywY" />
+<meta name="Keywords" content="actionscript,as3,google,免费,python,google app engine,django,javascript,doubleclick,advertise,flash,game,music" />
+<meta name="Description" content="Andy的个人博客|Andy's blog" />
+
+{% endblock %}
+
+{% block content %}
+
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+			{% if entries %}
+				{% for entry in entries %}
+					<div class="post" id="post-{{entry.key}}">
+						<h2 class="post-title"><a href="/{{ entry.link|escape }}" rel="bookmark" title="Permanent Link to {{entry.title|escape}}">{{entry.title|escape}}</a></h2>
+						<div class="postmetadata-top">
+							<span class="post-comments"><a href="/{{entry.link|escape}}#comments">{{entry.commentcount}} comments</a></span>
+							<span class="post-date">{{entry.date|datetz:"Y/m/d H:i"}}</span>
+							<span class="post-views"><a href="/{{entry.link|escape}}">{{entry.readtimes}} Reads</a></span>
+						</div>
+						<div class="entry">
+                            {%autoescape on%}{{entry.content_excerpt|safe}} {%endautoescape%}
+						</div>
+						<div class="postmetadata">
+							<span class="post-cat">Categories:
+								{%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%}
+							</span>
+
+							{% if entry.tags%}
+							<span class="post-tag">Tags:
+								{%for tag in entry.tags%}
+									<a href="/tag/{{tag|urlencode}}">{{tag}}</a>&nbsp;{%endfor%}</span>
+							{%endif%}
+						</div>
+					</div>
+				{% endfor %}
+				<div class="navigation">
+					<span class="pages">Page {{pageindex}}</span>
+					{% if show_prev %}<a href="/page/{{ pageindex|add:"-1" }}" >&laquo;Previous</a>{% endif %}
+					{% if show_next %}<a href="/page/{{ pageindex|add:"1"}}" >Next&raquo;</a>{% endif %}
+				</div>
+			{% else %}
+				<h2 class="center">Not Found</h2>
+				<p class="center">Cant find</p>
+			{% endif %}
+		</div></div>
+		
+		{% include "sidebar.html" %}
+	</div>
+{% endblock %}

@@ -10,6 +10,9 @@ from django.utils import simplejson
 from django.utils.translation import ugettext as _
 import base
 from model import *
+from google.appengine.ext.webapp import template as templatex
+
+templatex.register_template_library('app.filter')
 
 from app.pingback import autoPingback
 from app.trackback import TrackBack

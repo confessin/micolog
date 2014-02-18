@@ -17,6 +17,7 @@ from app.gmemsess import Session
 from base import *
 from model import *
 from django.utils.translation import ugettext as _
+from google.appengine.ext.webapp import template as templatex
 
 ##os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 ##from django.utils.translation import  activate
@@ -24,6 +25,7 @@ from django.utils.translation import ugettext as _
 ##settings._target = None
 ##activate(g_blog.language)
 from google.appengine.ext import zipserve
+templatex.register_template_library('app.filter')
 
 def doRequestHandle(old_handler,new_handler,**args):
         new_handler.initialize(old_handler.request,old_handler.response)

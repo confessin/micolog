@@ -1,0 +1,48 @@
+﻿{% extends "base.html" %}
+{%load filter%}
+{% block title %} {{category.name}} - {{blog.title}} {% endblock %}
+{% block content %}
+
+
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+			<div class="navigation-top">
+				<div><span>&#8216;{{category.name}}&#8217; Categories</span></div>
+			</div>
+			{% if entries %}
+				{% for entry in entries %}
+					<div class="post" id="post-{{entry.key}}">
+						<h2 class="post-title"><a href="/{{ entry.link|escape }}" rel="bookmark" title="Permanent Link to {{entry.title|escape}}">{{entry.title|escape}}</a></h2>
+						<div class="postmetadata-top">
+							<span class="post-comments"><a href="/{{entry.link|escape}}#comments">{{entry.commentcount}} Comments</a></span>
+							<span class="post-date">{{entry.date|datetz:"F jS, Y"}}</span>
+							<span class="post-views"><a href="/{{entry.link|escape}}">{{entry.readtimes}} 次阅读</a></span>
+						</div>
+						<div class="postmetadata">
+							<span class="post-cat">分类: </span><span>
+								{%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%}
+							</span>
+
+							{% if entry.tags%}
+							<span class="post-tag">Tags: </span><span>
+								{%for tag in entry.tags%}
+									<a href="/tag/{{tag|urlencode}}">{{tag}}</a>&nbsp;{%endfor%}</span>
+							{%endif%}
+						</div>
+					</div>
+				{% endfor %}
+				<div class="navigation">
+					{% if pager.prev %}<a href="?page={{ pager.prev}}" >&laquo;Previous</a>{% endif %}
+					{% if pager.next %}<a href="?page={{ pager.next }}" >Next&raquo;</a>{% endif %}
+				</div>
+			{% else %}
+				<h2 class="center">Not Found</h2>
+				<p class="center">Tried with all the grit.</p>
+			{% endif %}
+		</div></div>
+		
+		{% include "sidebar.html" %}
+	</div>
+{% endblock %}
+
+
