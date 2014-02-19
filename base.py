@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import os,logging
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
-from google.appengine.dist import use_library
-use_library('django', '1.2')
 import functools
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -227,6 +225,7 @@ class BaseRequestHandler(webapp.RequestHandler):
     def __init__(self, request=None, response=None):
         self.current='home'
         self.initialize(request, response)
+        self.request = request
 
 ##	def head(self, *args):
 ##		return self.get(*args)

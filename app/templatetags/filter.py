@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import os
-from google.appengine.dist import use_library
 from django import template
 from model import *
 import django.template.defaultfilters as defaultfilters
